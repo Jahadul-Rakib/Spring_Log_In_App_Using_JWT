@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,7 +51,7 @@ public class JWTTokenFilter extends OncePerRequestFilter {
 
     private void setUpSpringAuthentication(Claims claims) {
         @SuppressWarnings("unchecked")
-        List authorities = (List) claims.get("authorities");
+        List authorities = Collections.singletonList(claims.get("authorities"));
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
         authorities.forEach(value -> {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority((String) value);

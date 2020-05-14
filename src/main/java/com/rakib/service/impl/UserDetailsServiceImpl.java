@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			System.out.println(user);
 			return user;
 		} else {
-			throw new UsernameNotFoundException("user not found by email "+ user.getUserPhone());
+			throw new UsernameNotFoundException("user not found by email "+ user.getUserEmail());
 		}
 	}
 
