@@ -26,7 +26,7 @@ import com.rakib.service.UserService;
 @RestController
 @RequestMapping("/")
 public class HomeController {
-    List<UserRole> roles = new ArrayList<>();
+
     AuthenticationManager authenticationManager;
     UserService userService;
     RoleService roleService;
@@ -47,10 +47,17 @@ public class HomeController {
 
     @RequestMapping(value = "adduser", method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+        List<UserRole> roles = new ArrayList<>();
+        user.getRole().forEach(value -> {
+            UserRole userRole = new UserRole();
+            userRole.setUserRole(value);
+            try {
+                UserRole role = userRoleRepo.save(userRole);
+                roles.add(role);
+            }catch (Exception e){
+                e.getMessage();
+            }
 
-        user.getRole().forEach(aLong -> {
-            UserRole role = userRoleRepo.getOne(aLong);
-            roles.add(role);
         });
 
         UserInfo userInfo = new UserInfo();

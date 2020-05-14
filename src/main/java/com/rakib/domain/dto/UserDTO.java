@@ -11,7 +11,7 @@ public class UserDTO {
     @Email
     private String userEmail;
     private String userPassword;
-    private List<Long> role;
+    private List<String> role;
 
     public String getUserName() {
         return userName;
@@ -45,11 +45,11 @@ public class UserDTO {
         this.userPassword = userPassword;
     }
 
-    public List<Long> getRole() {
+    public List<String> getRole() {
         return role;
     }
 
-    public void setRole(List<Long> role) {
+    public void setRole(List<String> role) {
         this.role = role;
     }
 }
