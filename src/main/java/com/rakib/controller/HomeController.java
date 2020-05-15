@@ -22,6 +22,8 @@ import com.rakib.domain.UserInfo;
 import com.rakib.domain.UserRole;
 import com.rakib.service.UserService;
 
+import javax.validation.Valid;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/")
@@ -46,7 +48,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "adduser", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody UserDTO user) {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UserDTO user) {
         List<UserRole> roles = new ArrayList<>();
         user.getRole().forEach(value -> {
             UserRole userRole = new UserRole();
