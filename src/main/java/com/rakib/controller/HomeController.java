@@ -29,11 +29,11 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class HomeController {
 
-    AuthenticationManager authenticationManager;
-    UserService userService;
-    RoleService roleService;
-    PasswordEncoder passwordEncoder;
-    UserInfoRepo userInfoRepo;
+    private final AuthenticationManager authenticationManager;
+    private final UserService userService;
+    private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
+    private final UserInfoRepo userInfoRepo;
     @Autowired
     private UserRoleRepo userRoleRepo;
     @Autowired
